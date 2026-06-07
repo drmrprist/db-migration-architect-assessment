@@ -1,0 +1,76 @@
+{
+  "assessment": "DB Migration Architect - Validation Report",
+  "timestamp": "2026-06-07T15:01:06.218255",
+  "source": "localhost:1433/AdventureWorks2022",
+  "target": "localhost:1434/AdventureWorks2022",
+  "summary": {
+    "total_passed": 9,
+    "total_failed": 0,
+    "total_warnings": 0,
+    "overall_status": "PASSED"
+  },
+  "passed_checks": [
+    "ROW COUNTS: All 71 tables match",
+    "OBJECT COUNTS: All object types match",
+    "CHECKSUM: Sales.SalesOrderHeader matches",
+    "CHECKSUM: Sales.SalesOrderDetail matches",
+    "CHECKSUM: Production.Product matches",
+    "CHECKSUM: Person.Person matches",
+    "CHECKSUM: Purchasing.PurchaseOrderHeader matches",
+    "FOREIGN KEYS: Count matches (90)",
+    "SCHEMA: All 744 columns match"
+  ],
+  "failed_checks": [],
+  "warnings": [],
+  "details": {
+    "row_count_mismatches": [],
+    "object_count_mismatches": [],
+    "checksum_results": [
+      {
+        "table": "Sales.SalesOrderHeader",
+        "status": "PASSED",
+        "src_count": 31465,
+        "tgt_count": 31465,
+        "src_sum": 123216786.11590129,
+        "tgt_sum": 123216786.11590129
+      },
+      {
+        "table": "Sales.SalesOrderDetail",
+        "status": "PASSED",
+        "src_count": 121317,
+        "tgt_count": 121317,
+        "src_sum": 56423747.61476991,
+        "tgt_sum": 56423747.61476991
+      },
+      {
+        "table": "Production.Product",
+        "status": "PASSED",
+        "src_count": 504,
+        "tgt_count": 504,
+        "src_sum": 221087.7899999997,
+        "tgt_sum": 221087.7899999997
+      },
+      {
+        "table": "Person.Person",
+        "status": "PASSED",
+        "src_count": 19972,
+        "tgt_count": 19972,
+        "src_sum": 214960222.0,
+        "tgt_sum": 214960222.0
+      },
+      {
+        "table": "Purchasing.PurchaseOrderHeader",
+        "status": "PASSED",
+        "src_count": 4012,
+        "tgt_count": 4012,
+        "src_sum": 70479332.63829944,
+        "tgt_sum": 70479332.63829944
+      }
+    ],
+    "foreign_key_counts": {
+      "source": 90,
+      "target": 90
+    },
+    "missing_columns": []
+  }
+}

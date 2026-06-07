@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  sqlserver-source:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-source
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "SourceDB@12345"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-source-data:/var/opt/mssql
+    networks:
+      - migration-net
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "SourceDB@12345", "-C", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  sqlserver-target:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-target
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "TargetDB@12345"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1434:1433"
+    volumes:
+      - sqlserver-target-data:/var/opt/mssql
+    networks:
+      - migration-net
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "TargetDB@12345", "-C", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-ingress
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - migration-net
+    depends_on:
+      - sqlserver-source
+
+volumes:
+  sqlserver-source-data:
+  sqlserver-target-data:
+
+networks:
+  migration-net:
+    driver: bridge

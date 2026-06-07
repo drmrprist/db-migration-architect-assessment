@@ -1,0 +1,42 @@
+=======================================
+Migration started: Sun  7 Jun 2026 14:54:58 +08
+=======================================
+
+STEP 1: Capturing source row counts...
+Source row counts saved.
+
+STEP 2: Taking backup of source database...
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 25384 pages for database 'AdventureWorks2022', file 'AdventureWorks2022' on file 1.
+Processed 2 pages for database 'AdventureWorks2022', file 'AdventureWorks2022_log' on file 1.
+BACKUP DATABASE successfully processed 25386 pages in 0.478 seconds (414.904 MB/sec).
+Backup completed.
+
+STEP 3: Copying backup to target container...
+Backup copied to target container.
+
+STEP 4: Restoring database on target...
+Msg 3201, Level 16, State 2, Server e621c647d3b0, Line 2
+Cannot open backup device '/var/opt/mssql/data/AdventureWorks2022_migration.bak'. Operating system error 5(Access is denied.).
+Msg 3013, Level 16, State 1, Server e621c647d3b0, Line 2
+RESTORE DATABASE is terminating abnormally.
+Restore completed.
+
+STEP 5: Verifying target database...
+name                                                                                                                             state_desc                                                   recovery_model_desc                                         
+-------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------ ------------------------------------------------------------
+
+(0 rows affected)
+
+=======================================
+Migration completed: Sun  7 Jun 2026 14:55:01 +08
+=======================================

@@ -1,7 +1,7 @@
 # Database Migration Architect Assessment
 ## On-Premises SQL Server to Azure SQL Database Migration
 
-**Candidate:** Vidya Meenakshi  
+**Candidate:** Mohan Raja  
 **Role:** Database Migration Architect  
 **Assessment Date:** June 2026  
 **GitHub:** https://github.com/drmrpist/db-migration-architect-assessment

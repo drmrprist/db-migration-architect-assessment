@@ -18,7 +18,7 @@ This repository demonstrates a production-grade migration of an on-premises SQL 
 
 | Requirement | Status | Evidence |
 |---|---|---|
-| Working app container image | ✅ Complete | `docker/docker-compose.onprem.yml` |
+| Working app container image | ✅ Complete | nginx:alpine ingress container + SQL Server 2022 containers running via `docker/docker-compose.onprem.yml` |
 | Migrated database path | ✅ Complete | `migration/sqlserver/migrate_adventureworks.sh` |
 | Validation script execution | ✅ Complete | `validation/reconciliation.py` - 9/9 PASSED |
 | CI/CD pipeline | ✅ Complete | `cicd/github-actions-container-deploy.yml` |
